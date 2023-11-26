@@ -1,4 +1,4 @@
-var str="JS is the Best ^v^"
-var num=123456
-var bool =true
-var undef=undefined
+const str="JS is the Best ^v^"
+const num=123456
+const bool =true
+const undef=undefined
