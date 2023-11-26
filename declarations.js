@@ -7,7 +7,7 @@ bool: true,
 undef: undefined
 }
 const nested={
-arr: [4, '2', undefined],
+arr: [4, undefined , 2],
 obj:{
 str: "",
 num:123,
