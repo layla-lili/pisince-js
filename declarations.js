@@ -6,13 +6,13 @@ num: 123456,
 bool: true,
 undef: undefined
 }
+Object.freeze(obj,arr)
 const nested={
-arr: [4, undefined , '2'],
-obj:{
+arr: Object.freeze([4, undefined , '2']),
+obj:Object.freeze({
 str: "",
 num:123,
 bool: true
-}
+})
 } 
-console.log(nested.arr[1])
-Object.freeze(obj,nested)
+
