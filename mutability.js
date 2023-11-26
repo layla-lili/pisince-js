@@ -1,4 +1,8 @@
-const samePerson=person
+const samePerson={ 
+    name: 'Rick',
+    age: 77,
+    country: 'US',
+  }
 const newage=person.age+1
 const clone1={ 
     name: 'Rick',
