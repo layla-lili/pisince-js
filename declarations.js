@@ -6,7 +6,10 @@ num: 123456,
 bool: true,
 undef: undefined
 }
-Object.freeze(obj,arr)
+
+Object.freeze(obj)
+Object.freeze(arr)
+
 const nested={
 arr: Object.freeze([4, undefined , '2']),
 obj:Object.freeze({
@@ -15,4 +18,5 @@ num:123,
 bool: true
 })
 } 
-
+Object.freeze(nested)
+Object.freeze(nested.obj)
