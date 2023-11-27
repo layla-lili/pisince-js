@@ -1,10 +1,17 @@
-const words = (str) => { return str.split(" ") }
+const words = (str) => str.split(" ") 
 
-const sentence = (str) => { return str.join(' ') }
 
-const yell = (str) => { return str.toUpperCase() }
+const sentence = (str) => str.join(' ') 
 
-const whisper = (str) => { return "*" + str.toLowerCase() + "*" }
 
-const capitalize = (str) => { return str.charAt(0).toUpperCase() + str.slice(1) }
+const yell = (str) => str.toUpperCase() 
+
+
+const whisper = (str) => "*" + str.toLowerCase() + "*" 
+
+
+const capitalize = (str) => str.charAt(0).toUpperCase() + str.slice(1).toLowerCase()
+
+
+
 
