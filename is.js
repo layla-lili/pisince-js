@@ -1,13 +1,19 @@
-
-    const num= value => typeof value === 'number'
-    const nan= value => Number.isNaN(value)
-    const str= value => typeof value === 'string'
-    const bool= value => typeof value === 'boolean'
-    const undef= value => typeof value === 'undefined'
-    const def= value => typeof value !== 'undefined'
-    const arr= value => Array.isArray(value)
-    const obj= value => typeof value === 'object' && value !== null
-    const fun= value => typeof value === 'function'
-    const truthy= value => Boolean(value)
-    const falsy= value => !Boolean(value)
- 
+const is = {
+    num: (value) => typeof value === 'number',
+    nan: (value) => Number.isNaN(value),
+    str: (value) => typeof value === 'string',
+    bool: (value) => typeof value === 'boolean',
+    undef: (value) => typeof value === 'undefined',
+    def: (value) => typeof value !== 'undefined',
+    arr: (value) => Array.isArray(value),
+    obj: (value) => typeof value === 'object' && value !== null,
+    fun: (value) => typeof value === 'function',
+    truthy: (value) => Boolean(value),
+    falsy: (value) => !value,
+  };
+  
+  console.log(is.num(5));
+  // output: true
+  
+  console.log(is.num('ciao'));
+  // output: false
