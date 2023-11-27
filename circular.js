@@ -1,2 +1,2 @@
 var circular={}
-circular.Circular = circular
+circular.circular = circular
