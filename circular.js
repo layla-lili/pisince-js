@@ -1,2 +1,2 @@
 circular={}
-circular.circular = circular
+circular.Circular = circular
