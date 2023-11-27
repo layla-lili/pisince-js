@@ -1,22 +1,24 @@
 const dogYears = (planet, dage) => {
+    dage = (dage / 31557600)
     switch (planet) {
         case "earth":
-            return ((dage / 31557600) * 7).toFixed(2)*1.0
+            return Number((dage / 1.0) * 7).toFixed(2)
         case "mercury":
-            return ((dage / 0.2408467) * 7).toFixed(2)*1.0
+            return Number((dage / 0.2408467) * 7).toFixed(2)
         case "venus":
-            return ((dage / 0.61519726) * 7).toFixed(2)*1.0
+            return Number((dage / 0.61519726) * 7).toFixed(2)
         case "mars":
-            return ((dage / 1.8808158) * 7).toFixed(2)*1.0
+            return Number((dage / 1.8808158) * 7).toFixed(2)
         case "jupiter":
-            return ((dage / 11.862615) * 7).toFixed(2)*1.0
+            return Number((dage / 11.862615) * 7).toFixed(2)
         case "saturn":
-            return ((dage / 29.447498) * 7).toFixed(2)*1.0
+            return Number((dage / 29.447498) * 7).toFixed(2)
         case "uranus":
-            return ((dage / 84.016846) * 7).toFixed(2)*1.0
+            return Number((dage / 84.016846) * 7).toFixed(2)
         case "neptune":
-            return ((dage / 164.79132) * 7).toFixed(2)*1.0
+            return Number((dage / 164.79132) * 7).toFixed(2)
     }
 }
 
-
+console.log(dogYears('mercury', 2134835688))
+console.log(dogYears('earth', 1000000000))
