@@ -20,5 +20,3 @@ const dogYears = (planet, dage) => {
     }
 }
 
-console.log(dogYears('mercury', 2134835688))
-console.log(dogYears('earth', 1000000000))
