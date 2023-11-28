@@ -7,7 +7,7 @@ const multiply = (a,b)=>{
     }
     return result
 }
-console.log("🚀 ~ file: elementary.js:9 ~ multiply ~ multiply:", multiply(2,3))
+
 
  const divide = (a,b)=>{
     let c=0
@@ -27,11 +27,11 @@ console.log("🚀 ~ file: elementary.js:9 ~ multiply ~ multiply:", multiply(2,3)
   
 //     return quotient;
 //   }
- console.log("🚀 ~ file: elementary.js:21 ~ divide ~ divide:", divide(10,5))
+
 
  const modulo = (a,b)=>{
  return a- multiply(b,divide(a,b))
  }
- console.log("🚀 ~ file: elementary.js:33 ~ modulo ~ modulo = (a,b):", modulo(10,3))
+
 
 
