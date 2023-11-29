@@ -1,7 +1,14 @@
-function triangle(char, n) {
-    let str = "";
-    for (var i = 1; i <= n; i++) {
-        str = str + char.repeat(i) + "\n";
+function flat(arr, depth) {
+    if (!Array.isArray(arr)) {
+        return arr;
     }
-    return str.slice(0, -1);
+    if (depth === 0) {
+        return arr;
+    }
+    if (depth === undefined) {
+        depth = 1;
+    }
+    return arr.reduce((acc, cur) => {
+        return acc.concat(flat(cur, depth - 1));
+    }, []);
 }
