@@ -4,14 +4,19 @@ const slice = (strArr, sIndex, eIndex) => {
         eIndex = strArr.length;
     }
 
-    typeof (strArr) === Array ? slicer = [] : slicer = ""
+    if (typeof strArr === "object") {
+        slicer = []; // Initialize slicer as an empty array
+    } else {
+        slicer = ""; // Initialize slicer as an empty string
+    }
      
     if (sIndex < 0) sIndex = strArr.length + sIndex;
 
     if (eIndex < 0) eIndex = strArr.length + eIndex;
-  
+    
     for (let i = sIndex; i < eIndex; i++) {
-        if (typeof (strArr) === Array) {
+        if (typeof strArr === "object") {
+            
             slicer.push(strArr[i]);
         } else {
             slicer += strArr[i]
@@ -20,5 +25,5 @@ const slice = (strArr, sIndex, eIndex) => {
 
     return slicer;
 }
-console.log("🚀 ~ file: slicer.js:9 ~ slice ~ slice:", slice('abcdef', 2))
+console.log("🚀 ~ file: slicer.js:9 ~ slice ~ slice:", slice([1, 2, 3, 4, 5, 6], 2), [3, 4, 5, 6])
 
