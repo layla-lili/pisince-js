@@ -1,8 +1,8 @@
-const multiply = (a,b)=>b<0 || a<0 ? eval(a+String.fromCharCode(42)+b) :-eval(a+String.fromCharCode(42)+b)
-const divide = (a, b) => b === 0 ? 0 : (b < 0 || a < 0 ? eval(a + String.fromCharCode(47) + b) : -eval(a + String.fromCharCode(47) + b));
-const modulo = (a, b) => b === 0 ? 0 : (b < 0 || a < 0 ? eval(a + String.fromCharCode(37) + b) : -eval(a + String.fromCharCode(37) + b));
+const multiply = (a,b)=>b<0 || a<0 ? -eval(a+String.fromCharCode(42)+b) : eval(a+String.fromCharCode(42)+b)
+const divide = (a, b) => b === 0 ? 0 : (b < 0 || a < 0 ? -eval(a + String.fromCharCode(47) + b) : eval(a + String.fromCharCode(47) + b));
+const modulo = (a, b) => b === 0 ? 0 : (b < 0 || a < 0 ? -eval(a + String.fromCharCode(37) + b) : eval(a + String.fromCharCode(37) + b));
 
-
+console.log(multiply(34, 78))
 
 //{
     // let result=0
