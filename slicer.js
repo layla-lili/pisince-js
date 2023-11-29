@@ -1,8 +1,8 @@
 const slice =(strArr,sIndex,eIndex)=>{
     var slicer
     typeof(strArr) === Array? slicer=[]: slicer=""
-   
     const length = eIndex || strArr.length
+    sIndex<0?sIndex=(length+sIndex):sIndex
     for (let i = sIndex; i < length; i++) {
         if (typeof(strArr) === Array){
         slicer.push(strArr[i]);
@@ -10,7 +10,8 @@ const slice =(strArr,sIndex,eIndex)=>{
             slicer+=strArr[i]
         }
     }
+    
     return slicer;
 }
-console.log("🚀 ~ file: slicer.js:9 ~ slice ~ slice:", slice('abcdef', 2))
+console.log("🚀 ~ file: slicer.js:9 ~ slice ~ slice:", slice('abcdef', -2))
 
