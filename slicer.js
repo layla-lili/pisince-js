@@ -1,9 +1,16 @@
 const slice =(strArr,sIndex,eIndex)=>{
-    const newarr=[]
+    var slicer
+    typeof(strArr) === Array? slicer=[]: slicer=""
+   
     const length = eIndex || strArr.length
     for (let i = sIndex; i < length; i++) {
-        newarr.push(strArr[i]);
+        if (typeof(strArr) === Array){
+        slicer.push(strArr[i]);
+        }else{
+            slicer+=strArr[i]
+        }
     }
-    return newarr;
+    return slicer;
 }
+console.log("🚀 ~ file: slicer.js:9 ~ slice ~ slice:", slice('abcdef', 2))
 
