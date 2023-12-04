@@ -16,7 +16,8 @@ function addWeek(date) {
         13: "secondSunday",
     };
     let zTime = date.getTime() + 62135596800000;
-    return secondWeek[(zTime / 86400000) % 14];
+    //WeekDay(t) = (Day(t) + 4) modulo 7
+    return secondWeek[(zTime / 86400000) % 14]; //86400000 is a whole day in miliscond in ECMAScript in UTC time and leap second are ignored
 }
 
 function timeTravel(date) {
