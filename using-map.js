@@ -12,7 +12,14 @@ function upperCasingStates(arr) {
 }
 
 const fahrenheitToCelsius = temperatures => temperatures.map( temp=>Math.floor( ( (+temp.replace('°F','')) -32 )*(5/9) ).toString()+'°C')
-const trimTemp = temperatures => temperatures.map(temp=>({city: temp.city, temperature: temp.temperature.trim().replace(/\s+/g, '')}))
+// const trimTemp = temperatures => temperatures.map(temp=>({city: temp.city, temperature: temp.temperature.trim().replace(/\s+/g, '')}))
+function trimTemp(arr) {
+    return arr.map((item) => {
+        item.temperature = item.temperature.replaceAll(" ", "");
+        return item;
+    });
+}
+
 
 function tempForecasts(arr) {
     return arr.map((item) => {
