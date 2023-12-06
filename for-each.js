@@ -1,1 +1,1 @@
-const forEach=(arr,fu)=>arr === undefined ? 0 : fu(arr)
+const forEach=(arr,fu)=> {for (const i of arr) { fu(arr[i],i,arr)}}
