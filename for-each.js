@@ -1,1 +1,1 @@
-const forEach=(arr,fu)=>fu(arr)
+const forEach=(arr,fu)=>arr === undefined ? 0 : fu(arr)
