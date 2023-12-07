@@ -5,7 +5,7 @@ const build = (nbricks) => {
         let childDiv = document.createElement('div')
         childDiv.id = `brick-${bricks}`
         bricks % 3 === 2 ? (childDiv.dataset.foundation = true) : null
-        main.prepend(childDiv)
+        main.appendChild(childDiv)
         bricks++
         bricks > nbricks && clearInterval(interval)
     }, 100)
