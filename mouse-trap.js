@@ -1,7 +1,7 @@
 var circles = [];
 var box;
 class Circle {
-    // Creates an instance of a circle
+    // Creates an instance of a circle//
     constructor(x, y) {
         this.x = x;
         this.y = y;
