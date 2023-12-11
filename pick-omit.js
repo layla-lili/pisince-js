@@ -1,4 +1,4 @@
-const pick=(ob,...str)=>{
+const pick=(ob,str)=>{
     const obj2 = {}
     let keysObj = Object.keys(ob)
     keysObj.forEach(key => {
@@ -10,7 +10,7 @@ const pick=(ob,...str)=>{
 }
 
 
-const omit=(ob,...str)=>{
+const omit=(ob,str)=>{
     const obj2 = {}
     let keysObj = Object.keys(ob)
     keysObj.forEach(key => {
