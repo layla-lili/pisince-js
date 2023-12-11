@@ -50,6 +50,7 @@ const is = {}
 
 const typeOf = (n)=> typeof n
 const isArray =(n)=> Array.isArray(n)
+const isFunction = (n) => typeof n === 'function';
 const isObject = (n)=> typeOf(n) === "object" && !isFunction(n) && !isArray && n!=null
 
 is.num = (n)=> typeOf(n) === "number";
