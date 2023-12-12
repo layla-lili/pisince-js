@@ -9,27 +9,30 @@ function debounce(func, delay) {
       }, delay);
     };
   }
-  function opDebounce(func, delay, leading = false) {
-    let timeoutId;
-    let isExecuting = false;
-  
-    return function (...args) {
-      const executeFunction = () => {
-        isExecuting = true;
-        func.apply(this, args);
-        isExecuting = false;
-      };
-  
-      if (leading && !timeoutId && !isExecuting) {
+  function opThrottle(func, delay, trailing = true, leading = true) {
+  let isThrottled = false;
+  let lastArgs;
+  let timeoutId;
+
+  const executeFunction = () => {
+    func.apply(this, lastArgs);
+    timeoutId = null;
+    lastArgs = null;
+    isThrottled = false;
+  };
+
+  return function (...args) {
+    if (!isThrottled) {
+      if (leading) {
         executeFunction();
+        isThrottled = true;
+      } else if (trailing) {
+        lastArgs = args;
+        isThrottled = true;
+        timeoutId = setTimeout(executeFunction, delay);
       }
-  
-      clearTimeout(timeoutId);
-  
-      timeoutId = setTimeout(() => {
-        if (!leading || (leading && !isExecuting)) {
-          executeFunction();
-        }
-      }, delay);
-    };
-  }
+    } else if (trailing) {
+      lastArgs = args;
+    }
+  };
+}
