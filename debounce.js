@@ -9,21 +9,27 @@ function debounce(func, delay) {
       }, delay);
     };
   }
-  function opDebounce(func, delay, leading = true) {
+  function opDebounce(func, delay, leading = false) {
     let timeoutId;
+    let isExecuting = false;
   
     return function (...args) {
-      if (leading && !timeoutId) {
+      const executeFunction = () => {
+        isExecuting = true;
         func.apply(this, args);
+        isExecuting = false;
+      };
+  
+      if (leading && !timeoutId && !isExecuting) {
+        executeFunction();
       }
   
       clearTimeout(timeoutId);
   
       timeoutId = setTimeout(() => {
-        if (!leading) {
-          func.apply(this, args);
+        if (!leading || (leading && !isExecuting)) {
+          executeFunction();
         }
       }, delay);
     };
   }
-  
