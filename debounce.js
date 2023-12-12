@@ -9,7 +9,7 @@ function debounce(func, delay) {
       }, delay);
     };
   }
-  function opDebounce(func, delay, leading = false) {
+  function opDebounce(func, delay, leading = true) {
     let timeoutId;
   
     return function (...args) {
