@@ -18,6 +18,7 @@ const throttle = (func, delay)=>{
 const opThrottle = (func, delay, options = { trailing: true, leading: true }) => {
     let timeoutId;
     let isExecuting = false;
+    let isExecutedInLeading = false;
   
     return function (...args) {
       const { leading, trailing } = options;
@@ -26,16 +27,18 @@ const opThrottle = (func, delay, options = { trailing: true, leading: true }) =>
         func.apply(this, args);
         isExecuting = false;
         timeoutId = null;
+        isExecutedInLeading = false;
       };
   
       if (!timeoutId) {
         if (leading) {
           executeFunction();
+          isExecutedInLeading = true;
         }
         if (trailing) {
           isExecuting = true;
           timeoutId = setTimeout(() => {
-            if (trailing && isExecuting) {
+            if (trailing && isExecuting && !isExecutedInLeading) {
               executeFunction();
             }
           }, delay);
