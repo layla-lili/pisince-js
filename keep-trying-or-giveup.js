@@ -1,4 +1,4 @@
-const retry = (count, callback)=> {
+const retry = (count=3, callback)=> {
     return async function (...args) {
       let attempt = 0;
       while (attempt <= count) {
