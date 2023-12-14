@@ -2,7 +2,7 @@ const throttle = (func, delay)=>{
     let timeoutId
     let isThrottled
     
-    return function (...args) {
+    (...args)=> {
      !isThrottled?(func.apply(this, args), isThrottled = Date.now()) :
       clearTimeout(timeoutId)
      timeoutId = setTimeout(()=>{
@@ -19,7 +19,7 @@ const opThrottle = (fn, delay, { leading = false, trailing = true } = {}) => {
     let last = 0;
     let timer = null;
     
-    return function () {
+     ()=> {
         const now = +new Date();
         
         // If leading is false and this is the first invocation, update the last timestamp
