@@ -8,7 +8,7 @@ const  getJSON =  async (path='', params={})=>{
                             params[key].toSring().replace(' ','+')
                         )
                     }).join('&')
-const res = await fetch(url).then((replaceesponse)=>{
+const res = await fetch(myUrl).then((response)=>{
     if (response.ok){
         return response.json()
     } else {
