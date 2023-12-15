@@ -5,7 +5,7 @@ const  getJSON =  async (path='', params={})=>{
                     (key)=>{
                         return (
                             key.replace(' ','+')+ '='+
-                            params[key].toSring().replace(' ','+')
+                            params[key].toString().replace(' ','+')
                         )
                     }).join('&')
 const res = await fetch(myUrl).then((response)=>{
