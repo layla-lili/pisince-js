@@ -1,5 +1,5 @@
 function retry(count = 3, callback = async () => {}) {
-    return async function (...args) {
+    async (...args) =>{
       try {
         const res = await callback(...args);
         return res;
@@ -14,7 +14,7 @@ function retry(count = 3, callback = async () => {}) {
   }
   
   function timeout(delay = 0, callback = async () => {}) {
-    return async function (...args) {
+    async (...args) => {
       const timeoutPromise = new Promise((resolve) =>
         setTimeout(() => resolve(Error('timeout')), delay)
       );
