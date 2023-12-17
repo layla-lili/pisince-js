@@ -17,7 +17,7 @@ function makeDiscoWord(word) {
 
 function makeDiscoSentence(sentence) {
   const words = sentence.split(' ');
-  const discoWords = words.map(() => 'verydisco');
+  const discoWords = words.map((word) => makeDiscoWord(word));
   return discoWords.join(' ');
 }
 
