@@ -1,5 +1,5 @@
 import { readFile } from 'fs/promises';
-
+import { argv } from 'process';
 
 const fileName = argv[2];
 
