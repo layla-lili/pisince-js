@@ -8,7 +8,8 @@ const directoryPath = argv[2] || './';
   try {
     const resolvedPath = resolve(directoryPath);
     const entries = await readdir(resolvedPath);
-    const numberOfEntries = entries.length;
+    const filteredEntries = entries.filter((entry) => entry !== '.' && entry !== '..');
+    const numberOfEntries = filteredEntries.length;
     console.log(`Number of entries in directory '${resolvedPath}': ${numberOfEntries}`);
   } catch (err) {
     console.error('Error reading directory:', err);
