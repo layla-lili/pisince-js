@@ -1,17 +1,28 @@
-import { readdir } from 'fs/promises';
-import { argv } from 'process';
-import { resolve, join } from 'path';
+#!/usr/bin/env node
 
-const directoryPath = argv[2] || './';
+import fs from 'fs/promises';
+import path from 'path';
 
-(async () => {
+// Fonction pour compter les entrées dans un répertoire
+async function countEntriesInDirectory(directoryPath) {
   try {
-    const resolvedPath = resolve(directoryPath);
-    const entries = await readdir(resolvedPath);
-    const filteredEntries = entries.filter((entry) => entry !== '.' && entry !== '..');
-    const numberOfEntries = filteredEntries.length;
-    console.log(`Number of entries in directory '${resolvedPath}': ${numberOfEntries}`);
-  } catch (err) {
-    console.error('Error reading directory:', err);
+    const entries = await fs.readdir(directoryPath);
+    return entries.length;
+  } catch (error) {
+    console.error(`Erreur lors de la lecture du répertoire : ${error.message}`);
+    process.exit(1);
   }
-})();
+}
+
+// Récupère le chemin du répertoire à partir des arguments de la ligne de commande
+const directoryPath = process.argv[2] || process.cwd(); // Utilise le répertoire courant si aucun argument n'est passé
+
+// Appelle la fonction pour compter les entrées dans le répertoire
+countEntriesInDirectory(directoryPath)
+  .then((count) => {
+    console.log(`${count}`);
+  })
+  .catch((error) => {
+    console.error(`${error.message}`);
+    process.exit(1);
+  });
