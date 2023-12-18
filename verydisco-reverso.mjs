@@ -4,7 +4,7 @@ import { argv } from 'process';
 const fileName = argv[2];
 
 function reverseDiscoWord(word) {
-  const length = Math.ceil(word.length / 2);
+  const length = Math.floor(word.length / 2);
   const firstPart = word.slice(0, length);
   const secondPart = word.slice(length);
   return secondPart + firstPart;
@@ -12,7 +12,7 @@ function reverseDiscoWord(word) {
 
 (async () => {
   try {
-    const fileContent = await readFile(fileName);
+    const fileContent = await readFile(fileName, 'utf-8');
     const words = fileContent.trim().split(' ');
     const reversedWords = words.map((word) => reverseDiscoWord(word));
     const reversedSentence = reversedWords.join(' ');
