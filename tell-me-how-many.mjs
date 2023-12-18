@@ -1,6 +1,6 @@
 import { readdir } from 'fs/promises';
 import { argv } from 'process';
-import { resolve } from 'path';
+import { resolve, join } from 'path';
 
 const directoryPath = argv[2] || './';
 
