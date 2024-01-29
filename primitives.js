@@ -1,4 +1,4 @@
-let str="js round 2"
-let num = 123
-let bool = true
-let undef= undefined
+const str="js round 2"
+const num = 123
+const bool = true
+const undef= undefined
