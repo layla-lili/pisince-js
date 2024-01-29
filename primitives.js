@@ -1,4 +1,4 @@
-const str="JS is the Best ^v^"
-const num=123456
-const bool =true
-const undef=undefined
+str="js round 2"
+num = 123
+bool = true
+undef= undefined
