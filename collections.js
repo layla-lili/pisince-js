@@ -6,7 +6,7 @@ const strToArr = (str)=> str.split('')
 const strToSet = (str)=>new Set(strToArr(str))
 const mapToObj = (map)=>Object.fromEntries(map)
 const objToArr = (obj)=>Object.values(obj)
-const objToMap = (obj)=>new map(objToArr(obj))
+const objToMap = (obj)=>new Map(Object.entries(obj));
 const arrToObj = (arr)=>Object.assign({}, arr)
 const strToObj = (str)=> Object.assign({}, str.split(""))
 
