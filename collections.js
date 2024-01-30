@@ -1,7 +1,7 @@
 const arrToSet = (arr)=> new Set(arr)
 const arrToStr = (arr)=> arr.toString().replaceAll(",", "");
 const setToArr = (set)=>[...set]
-const setToStr = (set)=>[...set].toString()
+const setToStr = (set)=>arrToStr([...set])
 const strToArr = (str)=> str.split('')
 const strToSet = (str)=>new Set(strToArr(str))
 const mapToObj = (map)=>Object.fromEntries(map)
