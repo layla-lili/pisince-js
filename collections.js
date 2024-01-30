@@ -1,5 +1,5 @@
 const arrToSet = (arr)=> new Set(arr)
-const arrToStr = (arr)=> arr.toString()
+const arrToStr = (arr)=> arr.toString().replaceAll(",", "");
 const setToArr = (set)=>[...set]
 const setToStr = (set)=>[...set].toString()
 const strToArr = (str)=> str.split('')
