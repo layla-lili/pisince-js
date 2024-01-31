@@ -1,32 +1,86 @@
-function round(num) {
-    const decimalPart = num - Math.floor(num);
-    if (decimalPart >= 0.5) {
-      return Math.ceil(num);
-    } else {
-      return Math.floor(num);
+function round(int) {
+    let neg = false;
+    if (int < 0) {
+        neg = true;
+        int = -int;
     }
-  }
-  
-  function ceil(num) {
-    if (num === Math.floor(num)) {
-      return num;
-    } else if (num > 0) {
-      return Math.floor(num) + 1;
-    } else {
-      return Math.floor(num);
+    let counter = 0;
+    while (!(int < 1 && int > -1)) {
+        int -= 1;
+        counter++;
     }
-  }
-  
-  function floor(num) {
-    if (num === Math.floor(num)) {
-      return num;
-    } else if (num > 0) {
-      return Math.floor(num);
+    if (int < 0.5) {
+        if (neg) {
+            return -counter;
+        } else {
+            return counter;
+        }
     } else {
-      return Math.floor(num) - 1;
+        if (neg) {
+            return -counter - 1;
+        } else {
+            return counter + 1;
+        }
     }
-  }
-  
-  function trunc(num) {
-    return num < 0 ? Math.ceil(num) : Math.floor(num);
-  }
+}
+
+function floor(int) {
+    let neg = false;
+    if (int < 0) {
+        neg = true;
+        int = -int;
+    }
+    let intCopy = int;
+    let counter = 0;
+    while (!(intCopy < 1 && intCopy > -1)) {
+        intCopy -= 1;
+        counter++;
+    }
+    if (neg) {
+        return -counter - 1;
+    } else {
+        return counter;
+    }
+}
+
+function ceil(int) {
+    if (!int) return 0;
+    let neg = false;
+    if (int < 0) {
+        neg = true;
+        int = -int;
+    }
+    let intCopy = int;
+    let counter = 0;
+    while (!(intCopy < 1 && intCopy >= 0)) {
+        intCopy -= 1;
+        counter++;
+    }
+    if (neg) {
+        return -counter;
+    } else {
+        return counter + 1;
+    }
+}
+
+function trunc(int) {
+    let counter = 0;
+    if (int > 0xfffffffff) {
+        int -= 0xfffffffff;
+        counter += 0xfffffffff;
+    }
+    let neg = false;
+    if (int < 0) {
+        neg = true;
+        int = -int;
+    }
+    let intCopy = int;
+    while (!(intCopy < 1 && intCopy > -1)) {
+        intCopy -= 1;
+        counter++;
+    }
+    if (neg) {
+        return -counter;
+    }
+    return counter;
+}
