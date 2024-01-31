@@ -3,6 +3,8 @@ const reverse = (arr) => {
     let temp = []
     if (typeof arr === "string") {
     temp = arr.split(" ");
+    }else{
+        temp=arr
     }
     while (temp.length) {
         arrr.push(temp.pop())
@@ -16,4 +18,5 @@ const reverse = (arr) => {
         return arrr
     }
 }
+console.log("🚀 ~ reverse ~ reverse:", reverse([1,2,3]))
 
