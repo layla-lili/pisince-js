@@ -2,7 +2,11 @@ const reverse = (arr) => {
     let arrr = []
     let temp = []
     if (typeof arr === "string") {
+        if (arr.includes(" ")){
     temp = arr.split(" ");
+        }else{
+            temp = arr.split("");
+        }
     }else{
         temp=arr
     }
@@ -11,7 +15,11 @@ const reverse = (arr) => {
     }
 
     if (typeof arr === "string") {
+        if (arr.includes(" ")){
         arrr = arrr.toString().replaceAll(",", " ");
+        }else{
+            arrr = arrr.toString().replaceAll(",", "");
+        }
         return arrr
 
     } else {
