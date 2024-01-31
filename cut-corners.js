@@ -8,7 +8,7 @@ function round(num) {
   }
   
   function ceil(num) {
-    if (num % 1 === 0) {
+    if (num === Math.floor(num)) {
       return num;
     } else if (num > 0) {
       return Math.floor(num) + 1;
@@ -18,19 +18,15 @@ function round(num) {
   }
   
   function floor(num) {
-    if (num % 1 === 0) {
+    if (num === Math.floor(num)) {
       return num;
     } else if (num > 0) {
       return Math.floor(num);
     } else {
-      return Math.ceil(num) - 1;
+      return Math.floor(num) - 1;
     }
   }
   
   function trunc(num) {
-    if (num >= 0) {
-      return Math.floor(num);
-    } else {
-      return Math.ceil(num);
-    }
+    return num < 0 ? Math.ceil(num) : Math.floor(num);
   }
