@@ -1,30 +1,15 @@
-const reverse = (arr) => {
-    let arrr = []
-    let temp = []
-    if (typeof arr === "string") {
-        if (arr.includes(" ")){
-    temp = arr.split(" ");
-        }else{
-            temp = arr.split("");
+function reverse(input) {
+    if (typeof input === "string") {
+        let res = "";
+        for (let i = input.length - 1; i >= 0; i--) {
+            res += input[i];
         }
-    }else{
-        temp=arr
-    }
-    while (temp.length) {
-        arrr.push(temp.pop())
-    }
-
-    if (typeof arr === "string") {
-        if (arr.includes(" ")){
-        arrr = arrr.toString().replaceAll(",", " ");
-        }else{
-            arrr = arrr.toString().replaceAll(",", "");
+        return res;
+    } else if (Array.isArray(input)) {
+        let res = [];
+        for (let i = input.length - 1; i >= 0; i--) {
+            res.push(input[i]);
         }
-        return arrr
-
-    } else {
-        return arrr
+        return res;
     }
 }
-console.log("🚀 ~ reverse ~ reverse:", reverse([1,2,3]))
-
