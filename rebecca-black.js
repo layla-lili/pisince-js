@@ -2,7 +2,7 @@ const isFriday = (date) => new Date(date).getDay() === 5;
 
 const isWeekend = (date) => {
     var day = new Date(date).getDay();
-   return day === 0 || day === 5
+   return day === 0 || day === 6
 }
 
 
