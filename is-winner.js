@@ -25,4 +25,4 @@ async function isWinner(country) {
             return `${country} never was a winner`;
         }
     }
-}gougle-search.js
+}
