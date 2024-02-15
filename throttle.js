@@ -3,7 +3,6 @@
 -- throttle: Guaranteeing a constant flow of executions every X milliseconds. Like checking every 200ms your scroll position to trigger a CSS animation.
 -- requestAnimationFrame: a throttle alternative. When your function recalculates and renders elements on screen and you want to guarantee smooth changes or animations. Note: no IE9 support.
  */
-
 const throttle = (func, delay)=>{
     let timeoutId
     let isThrottled
@@ -26,7 +25,7 @@ const opThrottle = (fn, delay, { leading = false, trailing = true } = {}) => {
     let timer = null;
     
      ()=> {
-        const now = + new Date();
+        const now = +new Date();
         
         // If leading is false and this is the first invocation, update the last timestamp
         if (!last && leading === false) {

@@ -20,7 +20,7 @@ const opThrottle = (fn, delay, { leading = false, trailing = true } = {}) => {
     let timer = null;
     
      ()=> {
-        const now = + new Date();
+        const now = +new Date();
         
         // If leading is false and this is the first invocation, update the last timestamp
         if (!last && leading === false) {
