@@ -4,47 +4,62 @@
 -- requestAnimationFrame: a throttle alternative. When your function recalculates and renders elements on screen and you want to guarantee smooth changes or animations. Note: no IE9 support.
  */
 
-function throttle(fn, delay) {
-    let lastExecuted = 0;
-    return function(...args) {
-      const now = Date.now();
-      if (now - lastExecuted >= delay) {
-        fn(args);
-        lastExecuted = now;
+function throttle(cb, delay) {
+    let shouldWait = false
+    let waitingArgs
+    const timeoutFunc = () => {
+      if (waitingArgs == null) {
+        shouldWait = false
+      } else {
+        cb(...waitingArgs)
+        waitingArgs = null
+        setTimeout(timeoutFunc, delay)
       }
-    };
+    }
+  
+    return (...args) => {
+      if (shouldWait) {
+        waitingArgs = args
+        return
+      }
+  
+      cb(...args)
+      shouldWait = true
+  
+      setTimeout(timeoutFunc, delay)
+    }
   }
+  
 
 //the leading is the default classic above implmentation traling when its true and leading is false will be excuted
-const opThrottle = (fn, delay, { leading = false, trailing = true } = {}) => {
-        let lastExecuted = 0;
-        let timeoutId = null;
-        let leadingExecuted = false;
-      
-        return function(...args) {
-          const now = Date.now();
-          if (!lastExecuted && !leadingExecuted && leading) {
-            fn(args);
-            leadingExecuted = true;
-          }
-      
-          if (now - lastExecuted >= delay) {
-            if (timeoutId){
-                clearTimeout(timeoutId)
-                timeoutId = null
+const opThrottle = (cb, delay, { leading = false, trailing = true } = {}) => {
+    let last = 0;
+    let timer = null;
+    
+     ()=> {
+        const now = + new Date();
+        
+        // If leading is false and this is the first invocation, update the last timestamp
+        if (!last && leading === false) {
+            last = now;
+        }
+        
+        // If the time since the last invocation exceeds the delay, execute the function
+        if (now - last > delay) {
+            if (timer) {
+                clearTimeout(timer);
+                timer = null;
             }
-
-            if(trailing){
-                fn(arg)
-                lastExecuted = now
-            }else{
-                timeoutId = setTimeout(() => {
-                    fn(args)
-                    lastExecuted = now
-                }, delay );
-            }
-          }
-        };
-}
-
-
+            cb.apply(this, arguments);
+            last = now;
+        } 
+        // If trailing is not false and there is no timer, set a timer to execute the function after the delay
+        else if (!timer && trailing !== false) {
+            timer = setTimeout(() => {
+                cb.apply(this, arguments);
+                last = +new Date();
+                timer = null;
+            }, delay);
+        }
+    };
+};
