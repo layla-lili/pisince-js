@@ -4,35 +4,24 @@
 -- requestAnimationFrame: a throttle alternative. When your function recalculates and renders elements on screen and you want to guarantee smooth changes or animations. Note: no IE9 support.
  */
 
-function throttle(cb, delay) {
-    let shouldWait = false
-    let waitingArgs
-    const timeoutFunc = () => {
-      if (waitingArgs == null) {
-        shouldWait = false
-      } else {
-        cb(...waitingArgs)
-        waitingArgs = null
-        setTimeout(timeoutFunc, delay)
+const throttle = (func, delay)=>{
+    let timeoutId
+    let isThrottled
+    
+    (...args)=> {
+     !isThrottled?(func.apply(this, args), isThrottled = Date.now()) :
+      clearTimeout(timeoutId)
+     timeoutId = setTimeout(()=>{
+      if(Date.now() - isThrottled >= delay){
+        func.apply(this, args)
+        isThrottled = Date.now()
       }
-    }
-  
-    return (...args) => {
-      if (shouldWait) {
-        waitingArgs = args
-        return
-      }
-  
-      cb(...args)
-      shouldWait = true
-  
-      setTimeout(timeoutFunc, delay)
-    }
-  }
-  
-
+    }), delay - (Date.now()-isThrottled)
+    
+    };
+}
 //the leading is the default classic above implmentation traling when its true and leading is false will be excuted
-const opThrottle = (cb, delay, { leading = false, trailing = true } = {}) => {
+const opThrottle = (fn, delay, { leading = false, trailing = true } = {}) => {
     let last = 0;
     let timer = null;
     
@@ -50,13 +39,13 @@ const opThrottle = (cb, delay, { leading = false, trailing = true } = {}) => {
                 clearTimeout(timer);
                 timer = null;
             }
-            cb.apply(this, arguments);
+            fn.apply(this, arguments);
             last = now;
         } 
         // If trailing is not false and there is no timer, set a timer to execute the function after the delay
         else if (!timer && trailing !== false) {
             timer = setTimeout(() => {
-                cb.apply(this, arguments);
+                fn.apply(this, arguments);
                 last = +new Date();
                 timer = null;
             }, delay);
