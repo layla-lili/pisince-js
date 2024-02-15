@@ -1,8 +1,3 @@
-/**
--- debounce: Grouping a sudden burst of events (like keystrokes) into a single one.
--- throttle: Guaranteeing a constant flow of executions every X milliseconds. Like checking every 200ms your scroll position to trigger a CSS animation.
--- requestAnimationFrame: a throttle alternative. When your function recalculates and renders elements on screen and you want to guarantee smooth changes or animations. Note: no IE9 support.
- */
 const throttle = (func, delay)=>{
     let timeoutId
     let isThrottled
