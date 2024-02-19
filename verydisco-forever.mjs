@@ -1,11 +1,4 @@
-// const arg =process.argv[2]
-
-// const first = arg.split('').slice(0,Math.ceil(arg.length/2))
-// const second = arg.split('').slice(arg.length-(Math.ceil(
-//     arg.length/2)))
-// const reJoin = second.concat(first)
-// const reJoinString =reJoin.join(' ')
-//     console.log(reJoinString)
+import {writeFile} from 'fs/promises'
 const input = process.argv[2];
 
 function makeDiscoWord(word) {
@@ -28,4 +21,15 @@ if (input.includes(' ')) {
   result = makeDiscoWord(input);
 }
 
-console.log(result);
+
+
+(async () => {
+    try {
+      await writeFile('./verydisco-forever.txt', result);
+      console.log('File written successfully.');
+    } catch (err) {
+      console.error('Error writing to file:', err);
+    }
+  })();
+  
+  
